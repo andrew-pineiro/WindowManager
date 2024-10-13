@@ -3,7 +3,7 @@ namespace WindowManagerLibrary.Api;
 
 public class Logger {
 //TODO(#1): need to handle all errors in logging
-    //TODO: improve where log file path is stored
+//TODO(#2): improve where log file path is stored
     private readonly string logPath = $"C:\\Users\\Chill\\Repositories\\WindowManager\\.Logs\\{logFileDate}_wm_1.0.0.log";
     private static readonly string logFileDate = DateTime.Now.ToString("MM-yyyy");
     private static string log(string message) {
