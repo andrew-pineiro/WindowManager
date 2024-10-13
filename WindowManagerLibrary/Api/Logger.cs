@@ -44,7 +44,7 @@ public class Logger {
                 Console.WriteLine($"CRITICAL: Unable to write log: {ex.Message}");
             }
         } else {
-            Console.WriteLine($"CRITICAL: Unable to write log: WriteErrorLog message is an invalid type");
+            Console.WriteLine($"CRITICAL: Unable to write log: WriteErrorLog message is an invalid type. Expected `string` or `Exception` type");
         }
     }
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
