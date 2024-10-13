@@ -9,7 +9,7 @@ public class Logger {
     private static string log(string message) {
         return $"[{DateTime.Now}] {message}\n";
     }
-    //TODO: improve exception logging
+//TODO(#3): improve exception logging
     private static string logEx(Exception e) {
         return $"[{DateTime.Now}] {e.Message}\n";
     } 
