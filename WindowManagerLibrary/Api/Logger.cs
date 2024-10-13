@@ -2,16 +2,15 @@ namespace WindowManagerLibrary.Api;
 
 
 public class Logger {
-//TODO(#1): need to handle all errors in logging
-//TODO(#2): improve where log file path is stored
-    private readonly string logPath = $"C:\\Users\\Chill\\Repositories\\WindowManager\\.Logs\\{logFileDate}_wm_1.0.0.log";
+    //TODO(#1): need to handle all errors in logging
+    private readonly string logPath = Path.Join(GlobalSettings.LogFilePath, $"{logFileDate}_wm_{GlobalSettings.BuildNumber}.log");
     private static readonly string logFileDate = DateTime.Now.ToString("MM-yyyy");
     private static string log(string message) {
-        return $"[{DateTime.Now}] {message}\n";
+        return $"[{DateTime.Now}] INFO: {message}\n";
     }
-//TODO(#3): improve exception logging
+    //TODO(#3): improve exception logging
     private static string logEx(Exception e) {
-        return $"[{DateTime.Now}] {e.Message}\n";
+        return $"[{DateTime.Now}] EXCEPTION: {e.Message}\n";
     } 
     private static string logErr(string message) {
         return $"[{DateTime.Now}] ERROR: {message}\n";

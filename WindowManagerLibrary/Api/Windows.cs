@@ -5,7 +5,7 @@ namespace WindowManagerLibrary.Api;
 
 public class Windows {
 
-    public const uint MONITORINFOF_PRIMARY = 0x00000001;
+    public static uint MONITORINFOF_PRIMARY = (uint)GlobalSettings.PrimaryDisplay;
 
     [DllImport("user32.dll", SetLastError = true)]
     public static extern bool EnumWindows(EnumWindowsProc lpEnumFunc, IntPtr lParam);

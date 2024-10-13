@@ -18,6 +18,7 @@ if(monitors.Count <= 0) {
     Environment.Exit(0);
 }
 
+//Start at 1 to line up with Windows Display Settings
 var monitorId = 1;
 foreach(var monitor in monitors) {
     Console.WriteLine($"Monitor {monitorId}: Device={monitor.Name}, " +
@@ -36,4 +37,4 @@ if((!int.TryParse(id, out int parsedId)) || (!int.TryParse(screenId, out int par
     Console.WriteLine("ERROR: Invalid ID Supplied");
     Environment.Exit(1);
 }
-repo.MoveWindow(windows[parsedId].WindowProcessId, int.Parse(screenId));
+repo.MoveWindow(windows[parsedId], monitors[int.Parse(screenId)-1]);
