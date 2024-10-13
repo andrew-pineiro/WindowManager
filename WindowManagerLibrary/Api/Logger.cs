@@ -16,22 +16,36 @@ public class Logger {
         return $"[{DateTime.Now}] ERROR: {message}\n";
     }
     public static void WriteDebug(string message) {
-        Console.WriteLine($"DEBUG: {message}");
+        if(GlobalSettings.DebugMode) {
+            Console.WriteLine($"DEBUG: {message}");
+        }
     }
     public Logger() {
         
     }
     public void WriteLog(string message) {
-        File.AppendAllText(logPath, log(message));
+        try {
+            File.AppendAllText(logPath, log(message));
+        } catch (Exception ex) {
+            Console.WriteLine($"CRITICAL: Unable to write log: {ex.Message}");
+        }
     }
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
     public void WriteErrorLog(string message = "", Exception e = null) {
         if(e != null) {
-            File.AppendAllText(logPath, logEx(e));
+            try {
+                File.AppendAllText(logPath, logEx(e));
+            } catch (Exception ex) {
+               Console.WriteLine($"CRITICAL: Unable to write log: {ex.Message}");
+            }   
         } else if(!string.IsNullOrEmpty(message)) {
-            File.AppendAllText(logPath, logErr(message));
+            try {
+                File.AppendAllText(logPath, logErr(message));
+            } catch (Exception ex) {
+                Console.WriteLine($"CRITICAL: Unable to write log: {ex.Message}");
+            }
         } else {
-            throw new Exception("error trying to write error log");
+            Console.WriteLine($"CRITICAL: Unable to write log: WriteErrorLog message is an invalid type");
         }
     }
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
