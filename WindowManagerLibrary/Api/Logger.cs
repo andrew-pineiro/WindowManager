@@ -2,7 +2,6 @@ namespace WindowManagerLibrary.Api;
 
 
 public class Logger {
-    //TODO(#1): need to handle all errors in logging
     private readonly string logPath = Path.Join(GlobalSettings.LogFilePath, $"{logFileDate}_wm_{GlobalSettings.BuildNumber}.log");
     private static readonly string logFileDate = DateTime.Now.ToString("MM-yyyy");
     private static string log(string message) {
