@@ -59,7 +59,7 @@ public class WindowRespository {
     }
 
     public void MoveWindow(IntPtr hWnd, int screen) {
-        //TODO: moving window needs to be improved
+//TODO(#4): moving window needs to be improved
         //BUGS - Shows more windows than open
         //     - When switched it doesn't take over as main process
         //     - Full screen looks strange
